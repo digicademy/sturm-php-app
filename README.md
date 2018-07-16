@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/141020277.svg)](https://zenodo.org/badge/latestdoi/141020277)
+
 # DER STURM - Example PHP web application
 
 This repository contains an example PHP web application of the project 
