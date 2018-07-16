@@ -1,0 +1,10 @@
+{% for letter in letters %}
+    {% if (artist in letter.file) and (year in letter.date) %}
+        <li>
+            <a href="briefe/{{ letter.identifier }}.html">
+                <time datetime="{{ letter.date }}">{{ letter.date }}</time>, <span class="locality">{{ letter.placeSent }}</span>
+            </a>,
+            [ <span class="repository"><a href="{{ letter.source }}" class="external" target="blank">{{ letter.signature }}</a></span> ]
+        </li>
+    {% endif %}
+{% endfor %}

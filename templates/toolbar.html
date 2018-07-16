@@ -1,0 +1,34 @@
+<section class="twelve columns toolbar">
+    <ul class="pagination">
+        <li class="first">
+            <a class="black button" href="{{ settings.pagination.first|replace({'.xml' : '.html' }) }}" title="An den Anfang"> ⇇ </a>
+        </li>
+        <li class="previous">
+            {% if settings.pagination.previous %}
+                    {% set previous = settings.pagination.previous|replace({'.xml' : '.html' }) %}
+                {% else %}
+                    {% set previous = settings.pagination.first|replace({'.xml' : '.html' }) %}
+            {% endif %}
+            <a class="black button" href="{{ previous }}" title="Vorheriger Brief"> ← </a>
+        </li>
+        <li class="next">
+            {% if settings.pagination.next %}
+                    {% set next = settings.pagination.next|replace({'.xml' : '.html' }) %}
+                {% else %}
+                    {% set next = settings.pagination.last|replace({'.xml' : '.html' }) %}
+            {% endif %}
+            <a class="black button" href="{{ next }}" title="Nächster Brief"> → </a>
+        </li>
+        <li class="last">
+            <a class="black button" href="{{ settings.pagination.last|replace({'.xml' : '.html' }) }}" title="An das Ende"> ⇉ </a>
+        </li>
+    </ul>
+    <ul class="actions">
+        <li class="xml">
+            <a target="_blank" class="black button" href="https://sturm-edition.de/api/files/{{ letter.file }}" title="XML Quelle ansehen"> ➚ XML </a>
+        </li>
+        <li class="metadata">
+            <a target="_blank" class="black button" href="{{ letter.metaData }}" title="Metadaten bei der Staatsbibliothek Berlin"> ➚ Metadaten </a>
+        </li>
+    </ul>
+</section>

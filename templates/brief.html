@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ letter.sender }} an {{ letter.recipient }}, {% if letter.date %}{{ letter.date }},{% endif %}{% if letter.placeSent %} {{ letter.placeSent }}{% endif %}
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ settings.basePath }}/css/magnific-popup.css" />
+{% endblock %}
+
+{% block content %}
+
+    {% include('abteilung.html') %}
+
+    {% include('toolbar.html') %}
+
+    <section class="eight columns maincontent">
+
+        <div class="{{ letter.type }}">
+
+            <h4 class="dateline">
+                [
+                {% if letter.date|trim %}
+                 <time datetime="{{ letter.date }}">{{ letter.date }}</time> /
+                {% endif %}
+                {% if letter.placeSent|trim %}
+                    {% if letter.placeSentUri|trim %}
+                        <a href="{{ settings.basePath }}/orte.html#{{ letter.placeSentIdentifier }}" class="place">{{ letter.placeSent }}</a>
+                    {% else %}
+                        ohne Ort
+                    {% endif %}
+                {% endif %}
+                ]
+            </h4>
+
+            <div class="content">
+
+                {% autoescape %}
+                    {% set text = letter.text|replace({'%BASE_PATH%' : settings.basePath}) %}
+                    {{ text|raw }}
+                {% endautoescape %}
+
+                {% include('zitierhinweis.html') %}
+            </div>
+        </div>
+    </section>
+
+    <section class="four columns sidebar">
+        <div class="facsimile mfp-lightbox">
+        {% for key, facsimile in letter.facsimiles %}
+            <figure>
+                <figcaption>{{ key }}</figcaption>
+                <a href="{{ facsimile }}" title="{{ key }}">
+                    <img src="{{ facsimile }}" />
+                </a>
+            </figure>
+        {% endfor %}
+        </div>
+        <div class="dfg-viewer">
+            <a target="_blank" href="http://dfg-viewer.de/show/?set%5Bmets%5D={{ letter.metaData }}&amp;set%5Bimage%5D=1" class="button black external">
+                DFG Viewer
+            </a>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ settings.basePath }}/js/jquery.magnific-popup.min.js"></script>
+    <script src="{{ settings.basePath }}/js/lightbox.js"></script>
+{% endblock %}

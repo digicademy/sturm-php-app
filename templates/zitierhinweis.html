@@ -1,0 +1,23 @@
+<div class="info">
+    <p>
+        <strong>Zitierhinweis:</strong>
+        <br/>
+        {{ letter.editor|trim }}: Brief von {{ letter.sender }} an {{ letter.recipient }}, {% if letter.date %}{{ letter.date }},{% endif %}
+        {% if letter.placeSent %}{{ letter.placeSent }},{% endif %} in:
+        DER STURM. Digitale Quellenedition zur Geschichte der Internationalen Avantgarde. Digitale Quellenedition zur Geschichte der internationalen Avantgarde,
+        erarbeitet und herausgegeben von Marjam Trautmann und Torsten Schrade. Mainz, Akademie der Wissenschaften und der Literatur,
+        {{ letter.editDate|date('d.m.Y') }}.
+    </p>
+    <p>
+        <strong>Permalink:</strong>
+        <br/>
+        <a href="https://sturm-edition.de/id/{{ letter.identifier }}">https://sturm-edition.de/id/{{ letter.identifier }}
+        </a>
+    </p>
+    <p>
+        <strong>Nutzungshinweis:</strong>
+        <br/>
+        Edition und Forschungsdaten stehen unter einer <a href="https://creativecommons.org/licenses/by/4.0/">Creative
+        Commons Attribution 4.0 International (CC-BY 4.0)</a> Lizenz. Freie Verwendung unter Angabe von Zitierhinweis, Permalink und Kenntlichmachung von Änderungen.
+    </p>
+</div>

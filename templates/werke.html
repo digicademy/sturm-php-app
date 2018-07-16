@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Werke{% endblock %}
+
+{% block content %}
+    <section class="twelve columns maincontent">
+        <h2>Werkregister</h2>
+        {{ include('alphabet.html') }}
+        {% for letter, works in workAlphabet %}
+            <div class="row content" id="letter-{{ letter }}">
+                <h4>{{ letter }}</h4>
+                <ul class="lemmalist">
+                {% for work in works %}
+                    <li id="{{ work.identifier }}" class="lemma">
+                        {% if 'http' in work.source %}
+                            {{ work.name }} (<a href="{{ work.source }}" target="_blank" class="external" title="Weitere Informationen">ℹ</a>),
+                        {% else %}
+                            {{ work.name }},
+                        {% endif %}
+                        {% for key, folio in work.folios %}
+                            <a href="{{ settings.basePath }}/briefe/{{ folio|replace({ '.xml' : '.html' }) }}">{{ key }}</a>{% if loop.last %}{% else%},{% endif %}
+                        {% endfor %}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}

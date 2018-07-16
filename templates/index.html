@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Startseite{% endblock %}
+
+{% block content %}
+    <section class="twelve columns maincontent">
+        <div class="row teaser">
+            <div class="six columns letter">
+                <div class="teasercontainer">
+                    <a href="{{ settings.basePath }}/briefe.html" class="teaserbox">
+                        <img src="{{ settings.basePath }}/images/briefe.png" alt="" />
+                        <h4 class="teaserheader">Briefe</h4>
+                        <p class="teasertext">
+                            {{ homePage.letterTeaserBox|replace({ '###lettersCount###' : lettersCount }) }}
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="six columns letter">
+                <div class="teasercontainer">
+                    <a href="{{ settings.basePath }}/personen.html" class="teaserbox">
+                        <img src="{{ settings.basePath }}/images/personen.png" alt="" />
+                        <h4 class="teaserheader">Personen</h4>
+                        <p class="teasertext">
+                            {{ homePage.personTeaserBox|replace({ '###personsCount###' : personsCount }) }}
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row teaser">
+            <div class="six columns letter">
+                <div class="teasercontainer">
+                    <a href="{{ settings.basePath }}/orte.html" class="teaserbox">
+                        <img src="{{ settings.basePath }}/images/orte.png" alt="" />
+                        <h4 class="teaserheader">Orte</h4>
+                        <p class="teasertext">
+                            {{ homePage.placeTeaserBox|replace({ '###placesCount###' : placesCount }) }}
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="six columns letter">
+                <div class="teasercontainer">
+                    <a href="{{ settings.basePath }}/werke.html" class="teaserbox">
+                        <img src="{{ settings.basePath }}/images/werke.png" alt="" />
+                        <h4 class="teaserheader">Werke</h4>
+                        <p class="teasertext">
+                            {{ homePage.workTeaserBox|replace({ '###worksCount###' : worksCount }) }}
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

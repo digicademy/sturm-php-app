@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Orte{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+{% endblock %}
+
+{% block content %}
+    <section class="seven columns maincontent">
+        <h2>Ortsregister</h2>
+        {{ include('alphabet.html') }}
+        {% for letter, places in placeAlphabet %}
+            <div class="row content" id="letter-{{ letter }}">
+                <h4>{{ letter }}</h4>
+                <ul class="lemmalist">
+                {% for place in places %}
+                    <li id="{{ place.identifier }}" class="lemma">
+                        {% if 'http' in place.source %}
+                            {{ place.name }} (<a href="{{ place.source }}" target="_blank" class="external" title="Weitere Informationen">ℹ</a>),
+                        {% else %}
+                            {{ place.name }},
+                        {% endif %}
+                        {% for key, folio in place.folios %}
+                            <a href="{{ settings.basePath }}/briefe/{{ folio|replace({ '.xml' : '.html' }) }}">{{ key }}</a>{% if loop.last %}{% else%},{% endif %}
+                        {% endfor %}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </section>
+    <section class="five colums sidebar">
+        <h3>Kartendarstellung</h3>
+        <div id="map" class="leaflet">
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascript %}
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+    <script src="{{ settings.basePath }}/js/map.js"></script>
+{% endblock %}

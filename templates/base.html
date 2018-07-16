@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="description" content=""/>
+        <meta name="author" content="Marjam Mahmoodzada"/>
+        <meta name="author" content="Torsten Schrade"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>{% block title %}base.html{% endblock %} - DER STURM. Digitale Quellenedition zur Geschichte der internationalen Avantgarde.</title>
+        <link href="https://fonts.googleapis.com/css?family=Tinos:400,400i,700,700i&subset=latin-ext" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Ramaraja" rel="stylesheet"/>
+        <link rel="stylesheet" media="screen" href="{{ settings.basePath }}/css/magnific-popup.css" type="text/css"/>
+        <link rel="stylesheet" media="screen" href="{{ settings.basePath }}/css/normalize.css" type="text/css"/>
+        <link rel="stylesheet" media="screen" href="{{ settings.basePath }}/css/skeleton.css" type="text/css"/>
+        {% block css %}
+        {% endblock %}
+        <link rel="stylesheet" media="screen" href="{{ settings.basePath }}/css/style.css" type="text/css"/>
+        <link rel="stylesheet" media="print" href="{{ settings.basePath }}/css/print.css" type="text/css"/>
+    </head>
+    <body>
+        <div class="container">
+            <header class="row header">
+                <div class="branding">
+                    <a href="{{ path_for('index.html') }}">
+                        <h1 class="title"><span class="tighter">DER</span> <span class="tight">ST</span><span class="normal">URM</span></h1>
+                        <h2 class="subtitle">Digitale Quellenedition zur Geschichte der internationalen Avantgarde</h2>
+                    </a>
+                </div>
+                <nav class="navigation">
+                    <ul>
+                        <li>
+                            <a href="{{ settings.basePath }}/projekt.html" class="{% if settings.path == 'projekt.html' %}active{% else %}normal{% endif %}">
+                                Projekt
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ settings.basePath }}/briefe.html" class="{% if 'briefe' in settings.path %}active{% else %}normal{% endif %}">
+                                Briefe
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ settings.basePath }}/personen.html" class="{% if settings.path == 'personen.html' %}active{% else %}normal{% endif %}">
+                                Personen
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ settings.basePath }}/orte.html" class="{% if settings.path == 'orte.html' %}active{% else %}normal{% endif %}">
+                                Orte
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ settings.basePath }}/werke.html" class="{% if settings.path == 'werke.html' %}active{% else %}normal{% endif %}">
+                                Werke
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <main id="main" class="row content">
+                {% block content %}
+                {% endblock %}
+            </main>
+            <footer class="row footer">
+                <section class="six columns service">
+                    <h5>Links</h5>
+                    <ul class="standard">
+                        <li><a href="http://www.arthistoricum.net/themen/portale/sturm/">Themenportal „Herwarth Walden und DER STURM“</a></li>
+                        <li><a href="http://bluemountain.princeton.edu/exist/apps/bluemountain/title.html?titleURN=bmtnabg">Blue Mountain Project der Universität Princeton</a></li>
+                        <li><a href="http://kalliope.staatsbibliothek-berlin.de/de/findingaid_index?fa.id=DE-611-BF-4273&amp;fa.enum=111&amp;lastparam=true">STURM-Archiv der Staatsbibliothek zu Berlin</a></li>
+                        <li><a href="http://digi.ub.uni-heidelberg.de/diglit/sturm">STURM-Bestände der Universitätsbibliothek Heidelberg</a></li>
+                        <li><a href="http://www.zikg.eu/bibliothek/studienzentrum/digitalisierung/kataloge-sturm">STURM-Bestände des Zentralinstituts für Kunstgeschichte</a></li>
+                    </ul>
+                    <h5>Nachnutzung</h5>
+                    <p>
+                        Edition und Forschungsdaten stehen unter einer
+                        <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC-BY 4.0)</a>
+                        Lizenz und können unter Berücksichtigung der Lizenzbedingungen frei nachgenutzt werden.
+                        Die Editionssoftware dieses Projektes steht unter MIT-Lizenz und kann frei heruntergeladen und
+                        weiterentwickelt werden.
+                    </p>
+                </section>
+                <section class="six columns contact">
+                    <h5>Herausgeber</h5>
+                    <p>
+                        DER STURM. Digitale Quellenedition zur Geschichte der internationalen Avantgarde,
+                        erarbeitet und herausgegeben von Marjam Trautmann und Torsten Schrade, Mainz, Akademie
+                        der Wissenschaften und der Literatur, 2018.
+                    </p>
+                    <h5>Kontakt</h5>
+                    <a href="http://www.adwmainz.de/">
+                        <img id="logo" src="{{ settings.basePath }}/images/adwlogo.png"/>
+                    </a>
+                    <address vocab="http://schema.org/" typeof="Organization">
+                        <span property="name">Akademie der Wissenschaften und der Literatur Mainz</span><br/>
+                        <div property="address" typeof="PostalAddress">
+                        <span property="streetAddress">Geschwister-Scholl-Str. 2</span><br/>
+                        <span property="postalCode">55131</span> <span property="addressLocality">Mainz</span></div>
+                        Tel: <span property="telephone" class="telephone">06131 577 119</span><br/>
+                        E-Mail: <span property="email"><a href="mailto:redaktion@sturm-edition.de">redaktion@sturm-edition.de</a></span><br/>
+                        Twitter: <a class="twitter" href="https://twitter.com/SturmEdition">@SturmEdition</a><br/>
+                        <a class="imprint" href="{{ settings.basePath }}/impressum.html">Impressum</a>
+                    </address>
+                </section>
+            </footer>
+        </div>
+        <script src="{{ settings.basePath }}/js/jquery-1.12.4.min.js"></script>
+        {% block javascript %}
+        {% endblock %}
+        <script src="{{ settings.basePath }}/js/menu.js"></script>
+    </body>
+</html>

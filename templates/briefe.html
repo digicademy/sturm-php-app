@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Briefe{% endblock %}
+
+{% block content %}
+    <section class="twelve columns maincontent">
+        <h2>Briefe nach Personen und Jahren</h2>
+        <p>
+            <a href="#" id="showAll" class="black button">Alle öffnen</a>
+            <a href="#" id="hideAll" class="black button">Alle schließen</a>
+        </p>
+        <h3>Franz Marc</h3>
+        <h4 class="year">1914</h4>
+        <ol class="letters">
+            {% set artist = 'FMA' %} {% set year = '1914' %}
+            {% include 'briefliste.html' %}
+        </ol>
+        <h4 class="year">1915</h4>
+        <ol class="letters">
+            {% set artist = 'FMA' %} {% set year = '1915' %}
+            {% include 'briefliste.html' %}
+        </ol>
+        <h3>Jacoba van Heemskerck</h3>
+        <h4 class="year">1914</h4>
+        <ol class="letters">
+            {% set artist = 'JVH' %} {% set year = '1914' %}
+            {% include 'briefliste.html' %}
+        </ol>
+        <h4 class="year">1915</h4>
+        <ol class="letters">
+            {% set artist = 'JVH' %} {% set year = '1915' %}
+            {% include 'briefliste.html' %}
+        </ol>
+    </section>
+{% endblock %}
+
+{% block javascript %}
+    <script src="{{ settings.basePath }}/js/letters.js"></script>
+{% endblock %}

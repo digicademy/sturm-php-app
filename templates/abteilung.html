@@ -1,0 +1,23 @@
+<div class="department">
+    <h3>Abteilung I, Briefe</h3>
+    <p>
+        <strong>Dokumenttyp:
+            {% if letter.type == 'postcard' %}
+                Postkarte
+            {% elseif letter.type == 'militaryMail' %}
+                Feldpost
+            {% elseif letter.type == 'telegram' %}
+                Telegramm
+            {% else %}
+                Brief
+            {% endif %}
+        </strong>
+    </p>
+    <p class="msidentifier">
+        <strong>Quelle: </strong>
+        Staatsbibliothek zu Berlin Preußischer Kulturbesitz, Handschriftenabteilung, Sturm-Archiv I, {{ letter.sender }}
+        <a class="external" href="{{ letter.source }}">
+            {{ letter.signature }}
+        </a>
+    </p>
+</div>

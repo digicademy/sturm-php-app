@@ -1,0 +1,7 @@
+<div class="toolbar">
+    <ul class="alphabet">
+        {% for letter in settings.alphabet %}
+            <li class="letter"><a class="black button" href="#letter-{{ letter }}">{{ letter }}</a></li>
+        {% endfor %}
+    </ul>
+</div>

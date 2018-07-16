@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Personen{% endblock %}
+
+{% block content %}
+    <section class="twelve columns maincontent">
+        <h2>Personenregister</h2>
+        {{ include('alphabet.html') }}
+        {% for letter, persons in personAlphabet %}
+            <div class="row content" id="letter-{{ letter }}">
+                <h4>{{ letter }}</h4>
+                <ul class="lemmalist">
+                {% for person in persons %}
+                    <li id="{{ person.identifier }}" class="lemma">
+                        {% if 'http' in person.source %}
+                            {{ person.name }} (<a href="{{ person.source }}" target="_blank" class="external" title="Weitere Informationen">ℹ</a>),
+                        {% else %}
+                            {{ person.name }},
+                        {% endif %}
+                        {% for key, folio in person.folios %}
+                            <a href="{{ settings.basePath }}/briefe/{{ folio|replace({ '.xml' : '.html' }) }}">{{ key }}</a>{% if loop.last %}{% else%},{% endif %}
+                        {% endfor %}
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}
